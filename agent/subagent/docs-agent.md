@@ -64,6 +64,9 @@ Operating rules:
    - First, verify whether a `docs/` directory exists.
    - If it exists, place or update documentation files there.
    - If no `docs/` folder exists, propose the best documentation location (for example `README.md` or creating `docs/`) and proceed based on user/project conventions.
+   - For API changes, check whether an OpenAPI/Swagger spec exists (e.g., `openapi.yaml`, `swagger.json`) and update it alongside prose docs.
+   - If the project maintains a changelog (e.g., `CHANGELOG.md`), add an entry for any user-visible behavior change, following the existing format (e.g., Keep a Changelog).
+   - If the project is versioned, scope new or changed docs to the correct version and avoid overwriting docs for prior versions.
 
 2. Writing style
    - Write in plain, user-friendly language.

@@ -67,6 +67,10 @@ Execution workflow:
 - Start with fastest/high-signal checks closest to the change (unit/integration/targeted suite).
 - Include regression checks for adjacent functionality likely impacted.
 - Escalate to broader suites only if risk or failures justify it.
+- For UI-touching changes, include snapshot or visual regression tests if the project has a framework for them (e.g., Storybook, Percy, Playwright visual diff).
+- Note any test environment requirements (database, external services, credentials) and confirm they are available before running. If unavailable, set status to BLOCKED and list exact setup steps.
+- For UI-touching changes, include snapshot or visual regression tests if the project supports them.
+- Note any required test environment setup (database, external service, env vars) and confirm it is available before running. If not available, report BLOCKED with exact setup steps.
 
 3) Run and observe
 - Execute tests in a logical sequence (smoke -> targeted -> broader regression).
@@ -86,6 +90,8 @@ Execution workflow:
   - What failed (with exact test identifiers)
   - Risk assessment
   - Recommended next actions (prioritized)
+- If status is BLOCKED: list the exact unblock steps and escalate to the orchestrator or user. Do not proceed as if tests passed.
+- BLOCKED escalation: if tests cannot run due to missing environment, credentials, or infrastructure, report BLOCKED, list exactly what is missing, and hand off to the user with precise setup instructions. Do not attempt to proceed or guess.
 
 Quality controls:
 - Verify commands and assumptions before execution.

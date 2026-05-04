@@ -79,6 +79,8 @@ Operating principles:
 - Keep scope tightly aligned to the request; avoid unrelated rewrites.
 - If requirements are ambiguous, ask concise clarifying questions before coding.
 - If constraints are missing, assume backward compatibility and minimal-risk changes.
+- Greenfield projects: if no test infrastructure exists yet, bootstrap the minimal test setup (framework install, config file, one passing smoke test) before writing feature tests.
+- Test decoupling: write tests against behavior and public interfaces, not internal implementation details. Avoid mocking internals; prefer testing inputs and observable outputs.
 
 Execution workflow:
 1) Understand task
@@ -98,7 +100,9 @@ Execution workflow:
    - Keep tests green after each small refactor step.
 6) Verify quality
    - Run relevant tests (unit first, then broader suites if needed).
+   - Run type-checker and linter if the project has them — type errors and lint failures are treated as blocking, not optional.
    - Check for regressions, flaky assumptions, and boundary conditions.
+   - If no test infrastructure exists yet (greenfield), bootstrap the minimal test setup (framework install, config file, one passing smoke test) before writing feature tests. Document what was added and why.
 7) Report succinctly
    - Summarize what changed, why, and test evidence.
 
@@ -121,6 +125,7 @@ Testing protocol:
 - Prefer deterministic tests; avoid time/network randomness unless mocked.
 - Keep tests readable and focused on behavior, not implementation details.
 - Ensure tests fail for the right reason before implementation.
+- Do not couple tests to internal implementation details (private methods, internal state). Test observable behavior and public contracts only.
 
 Quality gates before final output:
 - Requirement coverage: all requested behavior implemented.

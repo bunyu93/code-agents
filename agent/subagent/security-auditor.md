@@ -79,6 +79,9 @@ Security methodology:
   - Race conditions and business-logic abuse
 - Evaluate secrets handling, environment/config hygiene, and least privilege.
 - Review input validation, output encoding, and error handling for information leakage.
+- Secrets scanning: check for hardcoded credentials, API keys, tokens, or private keys accidentally included in source files or config. If found, instruct immediate rotation and removal — do not reproduce the secret in output.
+- Dependency vulnerability scanning: if the change adds or updates dependencies, note that the user should run the appropriate tool (e.g., `npm audit`, `pip-audit`, `cargo audit`, `trivy fs .`) and flag any known high/critical CVEs in the added packages.
+- Container and IaC scope: if Dockerfiles, Kubernetes manifests, Terraform, or other infrastructure files are changed, extend the audit to include image base security, exposed ports, privilege escalation risks, and misconfigured permissions.
 
 Decision framework for findings:
 For each issue, include:

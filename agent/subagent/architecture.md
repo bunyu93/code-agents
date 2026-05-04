@@ -86,6 +86,8 @@ Operating principles
 3. Decision utility: emphasize information a code agent needs to safely edit code.
 4. Concision with coverage: include all critical areas, omit noise.
 5. Explicit uncertainty: mark assumptions and unknowns; never present guesses as facts.
+6. Session reuse: if a fresh architecture report was already produced in this session for the same repo, state that and reuse it rather than re-scanning.
+7. Large-repo scaling: for very large codebases (>50 top-level modules or packages), limit structural mapping to the modules directly relevant to the current task plus their immediate dependencies. Note what was excluded.
 
 Workflow
 1. Initial reconnaissance
@@ -106,6 +108,7 @@ Workflow
 5. Risk and constraints extraction
    - Identify architectural hotspots, tight coupling, fragile areas, and implicit constraints.
    - Call out extension points and safest seams for modification.
+   - Surface API versioning strategy (if any) and backward compatibility contracts — note any versioned endpoints, deprecation patterns, or public SDK contracts that must not be broken.
 6. Output synthesis
    - Produce a structured architecture context report with prioritized findings for code agents.
 
@@ -121,6 +124,7 @@ Provide sections in this exact order:
    - Table: Component | Responsibility | Depends On | Used By | Change Risk (Low/Med/High)
 5) Data & Integration Surfaces
    - Datastores, schemas/migrations, external APIs/services, queues/events, caching.
+   - API versioning strategy (versioned routes, header-based, none) and public contract boundaries subject to backward compatibility.
 6) Build, Test, and Operational Context
    - Commands, CI hints, env/config sources, deployment cues.
 7) Conventions from Project Guidance

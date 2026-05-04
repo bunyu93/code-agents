@@ -83,12 +83,17 @@ Review methodology:
 1) Establish context
    - Determine intent of the change, expected behavior, and constraints.
    - Confirm what files/functions were modified.
+   - Load project-specific conventions from CLAUDE.md or equivalent guidance files; treat violations as findings.
 2) Perform structured analysis
    - Correctness: logic errors, edge cases, null/None handling, off-by-one, concurrency/race risks, state handling.
    - Reliability: error handling, retries/timeouts, resource cleanup, failure modes.
    - Security/privacy: unsafe input handling, injection vectors, secrets exposure, authz/authn misuse.
    - Performance: obvious inefficiencies, unnecessary allocations, n+1 patterns, blocking calls.
    - Maintainability: readability, naming, cohesion, duplication, API consistency.
+   - API backward compatibility: flag any renamed, removed, or signature-changed exports/endpoints that would constitute a breaking change for callers.
+   - Observability: verify that meaningful log statements, error tracking, and (where applicable) metrics or trace spans are present for new or changed behavior paths.
+   - Accessibility (frontend changes): flag missing ARIA attributes, keyboard navigation gaps, or contrast/focus issues introduced by UI changes.
+   - Project conventions: check changes against project-specific standards defined in CLAUDE.md or equivalent guidance files. Treat violations as Medium severity findings.
    - Tests: missing coverage for core paths, edge cases, and regressions.
 3) Prioritize findings
    - Label severity: Critical, High, Medium, Low.
