@@ -1,0 +1,176 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "plugins": [],
+    "providers": {},
+    "permissions": [
+        {
+            "action": "execute",
+            "resource": "*",
+            "effect": "deny"
+        },
+        {
+            "action": "browser",
+            "resource": "*",
+            "effect": "deny"
+        },
+        {
+            "action": "webfetch",
+            "resource": "*",
+            "effect": "deny"
+        },
+        {
+            "action": "websearch",
+            "resource": "*",
+            "effect": "deny"
+        },
+        {
+            "action": "external_directory",
+            "resource": "*",
+            "effect": "deny"
+        }
+    ],
+    "experimental": {
+        "policies": [
+            {
+                "action": "provider.use",
+                "resource": "*",
+                "effect": "deny"
+            },
+            {
+                "action": "provider.use",
+                "resource": "litellm",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "execute:*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "browser:*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "webfetch:*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "websearch:*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "external_directory:*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "read:*/.ssh/*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "edit:*/.ssh/*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "read:*.env",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "read:*.env.*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "edit:*.env",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "edit:*.env.*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git status *",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git diff *",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git log *",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git show *",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git add *",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git commit *",
+                "effect": "allow"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git -C *",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *--git-dir*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *--work-tree*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *--no-index*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *../*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *..\\*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *:\\*",
+                "effect": "deny"
+            },
+            {
+                "action": "permission",
+                "resource": "shell:git *:/*",
+                "effect": "deny"
+            }
+        ]
+    }
+}
